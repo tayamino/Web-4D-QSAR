@@ -8,7 +8,9 @@ from django.conf import settings
 from django.core.mail import send_mail
 from celery import task
 from celery.utils.log import get_task_logger
-from LQTAgridPy.src.grid_generate import GridGenerate
+
+#from LQTAgridPy.src.grid_generate import GridGenerate
+from src.grid_generate import GridGenerate
 
 
 from dynamics.models import (Dynamic, Molecule)
