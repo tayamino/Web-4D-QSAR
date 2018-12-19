@@ -28,10 +28,13 @@ if [[ -d /opt/web4d-qsar ]] ; then
         ln -s /opt/web4d-qsar/supervisor.conf /etc/supervisor/conf.d/web4d-qsar.conf
     fi
 
-    pip install -r requirements.txt
+    sudo pip install -r requirements.txt
 
     cd ./src
 
-    ./initialize.sh
+    ../initialize.sh
 fi
+
+sudo supervisorctl reread
+sudo supervisorctl update
 

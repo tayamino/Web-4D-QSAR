@@ -17,8 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision :shell, path: "bootstrap.sh"
 
     config.vm.provider "virtualbox" do |v|
-        v.name = "Web4D-QSAR"
-        v.gui = true
+        #v.name = "Web4D-QSAR"
+        #v.gui = true
 
         v.memory = 1024
         v.cpus = 1
