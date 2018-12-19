@@ -144,6 +144,6 @@ BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 # E-mail settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'web4dqsar@gmail.com'
-EMAIL_HOST_PASSWORD = '4DLQTAQSAR'
+EMAIL_HOST_USER = 'fpt.qsar@gmail.com'
+EMAIL_HOST_PASSWORD = 'Web4DqsarFPT'
 EMAIL_PORT = 587
