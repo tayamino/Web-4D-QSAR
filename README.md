@@ -22,7 +22,6 @@ The **Web 4D-QSAR** was built and tested using Ubuntu 14.04 LTS but it should ru
 
 > **\* It should be automated using Puppet**
 
-
 ### Development requirements
 
 * build-essential/cmake
