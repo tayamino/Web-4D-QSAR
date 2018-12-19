@@ -12,15 +12,9 @@ Prerequisites :
 Installation :
 ==============
 
-* Run the coommandline (cmd.exe) and execute :
+* Download the PowerShell script : [installer.ps1](https://github.com/tayamino/Web-4D-QSAR/raw/master/installer.ps1)
 
-```
-git clone https://github.com/tayamino/web-4d-qsar C:\web4d-qsar
-
-cd C:\web4d-qsar
-
-vagrant up
-```
+* Execute it by using : `powershell.exe -executionpolicy bypass -file installer.ps1`
 
 Usage :
 =======
