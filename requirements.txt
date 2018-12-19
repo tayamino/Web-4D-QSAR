@@ -1,0 +1,19 @@
+Django==1.11.16
+dj-database-url
+python-decouple
+celery==4.2.1
+django-widget-tweaks>=1.3
+lqtagridpy
+django-multiselectfield
+numpy
+pandas
+
+# debug
+django-debug-toolbar
+django-extensions
+ipython
+
+# test
+pytest-django
+model-mommy
+
