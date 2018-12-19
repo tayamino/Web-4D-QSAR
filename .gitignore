@@ -9,3 +9,6 @@ __pycache__
 *.sublime-workspace
 bower_components
 node_modules
+
+src/files/dynamics
+src/files/static

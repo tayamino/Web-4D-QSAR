@@ -4,9 +4,7 @@ sudo apt-get install -y --force-yes build-essential cmake git python python-dev 
                                     dos2unix gromacs \
                                     supervisor rabbitmq-server
 
-#topobuild
-
-if [[ ! -d /usr/bin/topolbuild ]] ; then
+if [[ ! -f /usr/bin/topolbuild ]] ; then
     cd /tmp
     wget -nv http://www.gromacs.org/@api/deki/files/93/=topolbuild1_3.tgz -O topolbuild1_3.tgz
     tar xvfz topolbuild1_3.tgz
@@ -18,7 +16,7 @@ if [[ ! -d /usr/bin/topolbuild ]] ; then
 fi
 
 if [[ ! -d /opt/web4d-qsar ]] ; then
-    git clone https://github.com/rougeth/web-4d-qsar /opt/web4d-qsar
+    git clone https://github.com/tayamino/web-4d-qsar /opt/web4d-qsar
 fi
 
 if [[ -d /opt/web4d-qsar ]] ; then
@@ -28,7 +26,7 @@ if [[ -d /opt/web4d-qsar ]] ; then
         ln -s /opt/web4d-qsar/supervisor.conf /etc/supervisor/conf.d/web4d-qsar.conf
     fi
 
-    pip install -r requirements.txt
+    pip install -r requirements/dev-requirements.txt
 
     cd ./src
 
