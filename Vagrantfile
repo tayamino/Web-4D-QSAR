@@ -20,8 +20,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         #v.name = "Web4D-QSAR"
         #v.gui = true
 
-        v.memory = 1024
-        v.cpus = 1
+        v.memory = 512 # 4096
+        v.cpus = 1 #  2
     end
 end
 

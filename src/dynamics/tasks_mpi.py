@@ -450,7 +450,7 @@ def align_reference(molecule):
         molecule.process_dir,
     ))
 
-    print('Creating reference molecule /pconfs dir')
+    print('Creating reference molecule in /pconfs dir')
     pac_dir = molecule.process_dir + '/pconfs'
     if os.path.exists(pac_dir):
         shutil.rmtree(pac_dir)

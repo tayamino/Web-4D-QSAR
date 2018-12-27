@@ -1,8 +1,6 @@
 #!/bin/bash
 
-sudo apt update
-
-sudo apt install -y --force-yes build-essential cmake git python python-dev python-pip \
+sudo apt-get install -y --force-yes build-essential cmake git python python-dev python-pip \
                                     dos2unix gromacs \
                                     supervisor rabbitmq-server
 
@@ -40,4 +38,3 @@ fi
 sudo supervisorctl reread
 sudo supervisorctl update
 
-sudo supervisorctl restart qsar:*
