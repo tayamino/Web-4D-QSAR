@@ -1,11 +1,11 @@
 Prerequisites :
 ===============
 
-* Install [Oracle VirtualBox Platform](https://www.virtualbox.org/wiki/Downloads) package (for Windows hosts).
+* Install [Oracle VirtualBox Platform](http://download.virtualbox.org/virtualbox/4.3.40/VirtualBox-4.3.40-110317-Win.exe) (v4.3.12) package (for Windows hosts).
 
-* Install [Oracle VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) from the samepage as well.
+* Install [Oracle VirtualBox Extension Pack](http://download.virtualbox.org/virtualbox/4.3.40/Oracle_VM_VirtualBox_Extension_Pack-4.3.40-110317a.vbox-extpack) from the samepage as well.
 
-* Install [HashiCorp Vagrant](https://www.vagrantup.com/downloads.html).
+* Install [HashiCorp Vagrant](https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.msi).
 
 Installation :
 ==============
