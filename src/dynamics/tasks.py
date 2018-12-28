@@ -674,10 +674,8 @@ def task_prepare_output_files(molecules):
             molecule_dir
         ))
 
-
 @task()
 def molecular_dynamics(obj):
-
     if CELERY_OFF:
         logger.info('Celery off. Nothing will be executed here.')
         return True
@@ -728,6 +726,98 @@ def molecular_dynamics(obj):
             logger.info('Renaming lig files')
             for molecule in molecules:
                 task_rename_lig_files(molecule)
+
+        if dynamic.run_lqtagrid:
+            logger.info('Execute LQTAgrid.')
+            task_lqtagrid(molecules, dynamic)
+
+    except Exception as e:
+        error_msg = 'The following error has ocurred.\n'
+        error_msg += traceback.format_exc()
+        error_msg += 'Developers of web-4D-QSAR have received the same e-mail and will analyze it.'
+        send_mail(
+            'Error in your task',
+            error_msg,
+            'web4dqsar@gmail.com',
+            [dynamic.user.email, 'joaopauloam@gmail.com'],
+            fail_silently=False,
+        )
+        return False
+
+    send_mail(
+        'Task finished',
+        'Your task submitted to web-4D-QSAR has been finished.',
+        'web4dqsar@gmail.com',
+        [dynamic.user.email],
+        fail_silently=False,
+    )
+
+    return True
+
+#############################################################################################
+
+from celery import chain,group
+
+@task()
+def run_dynamics_molec(n,molecule):
+    logger.info('Prepare for {} molecule dynamic.'.format(n))
+    task_create_molecule_dir(molecule)
+    task_copy_static_files(molecule)
+
+    logger.info('Execute topolbuild.')
+    task_execute_topolbuild(molecule)
+
+    logger.info('Prepare files for gromacs.')
+    task_prepare_files_for_gromacs(molecule)
+
+    logger.info('Check system charge.')
+    charge = task_check_sytem_charge(molecule)
+
+    logger.info('Start molecular dynamic.')
+    task_dynamic(molecule, charge)
+
+    molecule.molecule.dynamic_executed = True
+    molecule.molecule.save()
+
+@task()
+def run_dynamics_align(molecules):
+    logger.info('Start alignment.')
+    
+    ref_molecule = [m for m in molecules if m.molecule.reference][0]
+    not_ref_molecules = [m for m in molecules if not m.molecule.reference]
+    for m in molecules:
+        logger.info(m.filename+str(m.molecule.reference))
+
+    align_reference(ref_molecule)
+    ref_dir = ref_molecule.process_dir
+
+    for molecule in not_ref_molecules:
+        align_not_reference(molecule, ref_dir)
+
+    logger.info('Renaming lig files')
+    for molecule in molecules:
+        task_rename_lig_files(molecule)
+
+@task()
+def molecular_dynamics_2(obj):
+    if CELERY_OFF:
+        logger.info('Celery off. Nothing will be executed here.')
+        return True
+
+    try:
+        for desObj in serializers.deserialize("json", obj):
+            dynamic = desObj.object
+
+        logger.info('Create a MoleculeProcess for each molecule in the dynamic.')
+        molecules = task_create_molecule_process(dynamic)
+
+        if dynamic.run_dynamics:
+            job = group(run_dynamics_molec.s(n,m) for n,m in enumerate(molecules) if not m.molecule.dynamic_executed)
+
+            job.apply_async().wait()
+
+        if dynamic.run_alignment:
+            run_dynamics_align(molecules)
 
         if dynamic.run_lqtagrid:
             logger.info('Execute LQTAgrid.')

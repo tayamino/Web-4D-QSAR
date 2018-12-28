@@ -7,8 +7,11 @@ __pycache__
 *.egg-info
 *.sublime-project
 *.sublime-workspace
+
 bower_components
 node_modules
 
-src/files/dynamics
-src/files/static
+src/*/migrations
+
+#src/files/dynamics
+#src/files/static
