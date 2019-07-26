@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.hostname = "web4d-qsar.box"
     config.ssh.forward_agent = true
 
-    config.vm.network :forwarded_port, guest: 8000, host: 8000
+    config.vm.network :forwarded_port, guest: 9000, host: 9000
 
     #config.vm.synced_folder "../data", "/vagrant_data"
 
@@ -24,4 +24,3 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         v.cpus = 2
     end
 end
-

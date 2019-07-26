@@ -3,8 +3,14 @@
 TARGET_DIR=/opt/web4d-qsar
 
 if [[ -d /vagrant ]] ; then
-	TARGET_DIR=/vagrant
+	if [[ -d /vagrant ]] ; then
+		cp -afR /vagrant $TARGET_DIR
+	fi
 fi
+
+#if [[ -d /vagrant ]] ; then
+#	TARGET_DIR=/vagrant
+#fi
 
 sudo apt-get install -y --force-yes build-essential cmake git python python-dev python-pip \
                                     dos2unix gromacs \

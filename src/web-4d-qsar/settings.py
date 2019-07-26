@@ -134,7 +134,7 @@ TEMPLATES = [
 WEB_4D_QSAR_STATIC_DIR  = os.path.join(BASE_DIR, 'files/static')
 TOPOLBUILD_DIR = '/opt/topolbuild1_3'
 #GROMACS_DIR = '/usr/local/gromacs/bin'
-GROMACS_DIR = '/vagrant'
+GROMACS_DIR = '/opt/web4d-qsar'
 GROMACS_MPI = False
 
 # Celery settings
