@@ -5,13 +5,12 @@ celery==4.2.1
 django-widget-tweaks>=1.3
 lqtagridpy
 django-multiselectfield
-numpy
-pandas
+#numpy
+#pandas
 
-# debug
 django-debug-toolbar
 django-extensions
-ipython
+#ipython
 
 # test
 pytest-django
