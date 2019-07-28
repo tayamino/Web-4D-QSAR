@@ -12,8 +12,8 @@ fi
 #	TARGET_DIR=/vagrant
 #fi
 
-sudo apt-get install -y --force-yes build-essential cmake git python python-dev python-pip \
-                                    dos2unix gromacs \
+sudo apt-get install -y --force-yes build-essential cmake git python dos2unix gromacs \
+                                    python-dev python-pip python python-numpy python-pandas \
                                     supervisor rabbitmq-server
 
 if [[ ! -f /usr/bin/topolbuild ]] ; then
